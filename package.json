@@ -26,5 +26,7 @@
   },
   "homepage": "https://github.com/mikkopiu/node-csv-parser-example",
 
-  "dependencies": {}
+  "dependencies": {
+      "through": "2.3.6"
+  }
 }
