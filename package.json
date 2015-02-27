@@ -1,7 +1,7 @@
 {
   "name": "node-csv-parser-example",
   "version": "1.0.0",
-  "description": "An example of a CSV parser implemented in Node.js",
+  "description": "An example of a CSV parser implemented in Node.js. Takes files for input and output as arguments.",
   "main": "parser.js",
   "repository": {
     "type": "git",
@@ -26,7 +26,5 @@
   },
   "homepage": "https://github.com/mikkopiu/node-csv-parser-example",
 
-  "dependencies": {
-    "csv-parse": "0.0.9"
-  }
+  "dependencies": {}
 }
