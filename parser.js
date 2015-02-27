@@ -5,6 +5,9 @@ var through = require('through');
 var from = process.argv[2];
 var to = process.argv[3];
 
+// Benchmarking
+var startTime = Date.now();
+
 // Raise the buffer limits
 var readOpts = {highWaterMark: Math.pow(2,16)};
 var writeOpts = {highWaterMark: Math.pow(2,16)};
@@ -38,5 +41,6 @@ function parse (buf) {
  * Finished writing
  */
 function end () {
+    console.log('Parsing took (ms): ' + (Date.now() - start));
     console.log('Finished parsing');
 }
