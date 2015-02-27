@@ -1,0 +1,32 @@
+{
+  "name": "node-csv-parser-example",
+  "version": "1.0.0",
+  "description": "An example of a CSV parser implemented in Node.js",
+  "main": "parser.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikkopiu/node-csv-parser-example.git"
+  },
+  "keywords": [
+    "node.js",
+    "node",
+    "csv",
+    "parse",
+    "parser",
+    "example",
+    "sample"
+  ],
+  "author": {
+    "name": "Mikko Piuhola",
+    "url": "http://www.mikkopiuhola.org"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikkopiu/node-csv-parser-example/issues"
+  },
+  "homepage": "https://github.com/mikkopiu/node-csv-parser-example",
+
+  "dependencies": {
+    "csv-parse": "0.0.9"
+  }
+}
