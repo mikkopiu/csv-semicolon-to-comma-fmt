@@ -13,6 +13,9 @@ readStream.on('data', function (data) {
     pump(); // Process the buffer
 });
 
+/**
+ * Pump buffer data to parser
+ */
 function pump() {
     var pos;
 
@@ -29,7 +32,11 @@ function pump() {
     }
 }
 
-// Parse the line
+/**
+ * Parse a line string
+ * Calls write when parsed
+ * @param {String} line Line to parse
+ */
 function parse (line) {
     if (line[line.length - 1] == '\r') {
         line = line.substr(0, line.length - 1); // Discard CD (0x0D)
@@ -38,22 +45,26 @@ function parse (line) {
     // Ignore empty lines
     if (line.length > 0) {
         var parsedLine = line.replace(/,/g, ';'); // Parse the line
-        writeStream.write(parsedLine + '\n');
+        writeBuf += parsedLine + '\n';
+        write();
     }
 }
 
+/**
+ * Write to file
+ */
 function write() {
     var pos;
 
     // Keep going while there's a newline somewhere in the buffer
-    while ((pos = buf.indexOf('\n')) >= 0) {
+    while ((pos = writeBuf.indexOf('\n')) >= 0) {
         // If there's more than one newline in a row, the buffer will now start with a newline
         if (pos === 0) {
-            buf = buf.slice(1); // Discard it
+            writeBuf = writeBuf.slice(1); // Discard it
             continue; // So that the next iteration will start with data
         }
 
-        parse(buf.slice(0, pos)); // Hand off the line
-        buf = buf.slice(pos + 1); // Slice the processed data off the buffer
+        writeStream.write(writeBuf.slice(0, pos)); // Hand off the line
+        writeBuf = writeBuf.slice(pos + 1); // Slice the processed data off the buffer
     }
 }
