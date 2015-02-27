@@ -21,3 +21,9 @@ $RECYCLE.BIN/
 
 # Modules folder
 node_modules
+
+#############
+## Random files
+#############
+
+*.csv
