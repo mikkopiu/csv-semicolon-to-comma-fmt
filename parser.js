@@ -41,6 +41,6 @@ function parse (buf) {
  * Finished writing
  */
 function end () {
-    console.log('Parsing took (ms): ' + (Date.now() - start));
+    console.log('Parsing took (ms): ' + (Date.now() - startTime));
     console.log('Finished parsing');
 }
