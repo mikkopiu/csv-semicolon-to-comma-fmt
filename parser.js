@@ -9,8 +9,8 @@ var to = process.argv[3];
 var startTime = Date.now();
 
 // Raise the buffer limits
-var readOpts = {highWaterMark: 256000000};
-var writeOpts = {highWaterMark: 256000000};
+var readOpts = {highWaterMark: Math.pow(2,16)};
+var writeOpts = {highWaterMark: Math.pow(2,16)};
 
 // Create file streams
 var source = fs.createReadStream(__dirname + '/' + from, readOpts);
