@@ -20,7 +20,7 @@
     "name": "Mikko Piuhola",
     "url": "http://www.mikkopiuhola.org"
   },
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/mikkopiu/node-csv-parser-example/issues"
   },
