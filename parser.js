@@ -9,12 +9,12 @@ var to = process.argv[3];
 var startTime = Date.now();
 
 // Raise the buffer limits
-var readOpts = {highWaterMark: Math.pow(2,16)};
-var writeOpts = {highWaterMark: Math.pow(2,16)};
+var readOpts = {highWaterMark: 256000000};
+var writeOpts = {highWaterMark: 256000000};
 
 // Create file streams
 var source = fs.createReadStream(__dirname + '/' + from, readOpts);
-var destiny = fs.createWriteStream(__dirname + '/' + to, writeOpts);
+var destination = fs.createWriteStream(__dirname + '/' + to, writeOpts);
 
 // Pipe data from read-stream to write- and end-functions
 source.pipe(through(write, end));
@@ -24,7 +24,7 @@ source.pipe(through(write, end));
  * @param {Buffer} buf Buffer of a readable stream's data
  */
 function write (buf) {
-    destiny.write(parse(buf));
+    destination.write(parse(buf));
 }
 
 /**
@@ -41,6 +41,6 @@ function parse (buf) {
  * Finished writing
  */
 function end () {
-    console.log('Parsing took (ms): ' + (Date.now() - startTime));
     console.log('Finished parsing');
+    console.log('Parsing took (ms): ' + (Date.now() - startTime));
 }
