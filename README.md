@@ -1,5 +1,5 @@
-# node-csv-parser-example
-CSV parser implemented in Node.js.
+# csv-semicolon-to-comma-fmt
+CSV semicolon to comma formatter implemented in Node.js.
 
 Uses `through`-module to pipe data into parser function.
 
