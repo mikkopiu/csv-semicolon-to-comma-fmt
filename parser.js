@@ -1,20 +1,21 @@
-var fs = require('fs');
-var through = require('through');
+'use strict';
+
+const fs = require('fs');
+const through = require('through');
 
 // File input & output given as arguments
-var from = process.argv[2];
-var to = process.argv[3];
+const from = process.argv[2];
+const to = process.argv[3];
 
 // Benchmarking
-var startTime = Date.now();
+const startTime = Date.now();
 
 // Raise the buffer limits
-var readOpts = {highWaterMark: Math.pow(2,16)};
-var writeOpts = {highWaterMark: Math.pow(2,16)};
+const streamOpts = {highWaterMark: Math.pow(2, 16)};
 
 // Create file streams
-var source = fs.createReadStream(__dirname + '/' + from, readOpts);
-var destination = fs.createWriteStream(__dirname + '/' + to, writeOpts);
+var source = fs.createReadStream(__dirname + '/' + from, streamOpts);
+var destination = fs.createWriteStream(__dirname + '/' + to, streamOpts);
 
 // Pipe data from read-stream to write- and end-functions
 source.pipe(through(write, end));
@@ -42,5 +43,5 @@ function parse (buf) {
  */
 function end () {
     console.log('Finished parsing');
-    console.log('Parsing took (ms): ' + (Date.now() - startTime));
+    console.log(`Parsing took (ms): ${(Date.now() - startTime)}`);
 }
